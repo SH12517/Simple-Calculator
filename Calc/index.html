@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calc</title>
+    <link rel="stylesheet" href="style.css">
+	</head>    
+	<body>
+		<div class="calculator">	<!-- main container -->
+			<input type="text" class="display" disabled/>
+			<div>		<!-- main div -->
+				<div class="row">			<!-- rows -->
+					<button value="7">7</button>
+					<button value="8">8</button>
+					<button value="9">9</button>
+					<button value="+" class="operator">+</button>
+				</div>
+				<div class="row">
+					<button value="4">4</button>
+					<button value="5">5</button>
+					<button value="6">6</button>
+					<button value="-" class="operator">-</button>
+				</div>
+				<div class="row">
+					<button value="1">1</button>
+					<button value="2">2</button>
+					<button value="3">3</button>
+					<button value="*" class="operator">x</button>
+				</div>
+				<div class="row">
+					<button value="AC" class="operator">AC</button>
+					<button value="0">0</button>
+					<button value="/" class="operator">/</button>
+					<button value="=" class="operator">=</button>
+				</div>
+			</div>
+		</div>
+		<script>
+			const buttons = document.querySelectorAll('button'); //all buttons 16
+			const textBox = document.querySelector('.display'); //text box
+			//featching 1-by-1 button 
+			buttons.forEach( function(bt) {
+											bt.addEventListener('click', calculate); //adding event to 16
+										} );
+
+			function calculate(bt)	  
+			{
+				const clickedBtValue = bt.target.value;	
+				if (clickedBtValue === "AC") {
+					textBox.value = "";	//textBox cleared
+				} 	 
+				else if(clickedBtValue === "=") 
+				{
+					if(textBox.value !== "") {
+						textBox.value = eval(textBox.value);
+					}
+				} 
+				else {
+					textBox.value = textBox.value + clickedBtValue;	  
+				}
+			}
+		</script>
+	</body>
+</html>
